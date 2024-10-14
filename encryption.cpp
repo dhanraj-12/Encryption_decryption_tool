@@ -28,12 +28,15 @@ bool encryptFile(const string& filename, bool encrypt) {
 
     if(performCaesarCipher(content,encrypt)) {
         // Create the output file and writting the modified content
-        ofstream outfile(encrypt ? "encrypted_"+filename : "decrypted_"+filename);
-        if(!outfile) {
+        ofstream outFile(filename, ios::trunc);
+        if (!outFile) {
+            cerr << "Error: Unable to open file for writing." << endl;
             return false;
         }
-        outfile << content;
-        outfile.close();
+
+        // Write the modified content back to the same file
+        outFile << content;
+        outFile.close();
         return true;
     }
 

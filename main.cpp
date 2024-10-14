@@ -14,7 +14,19 @@ int main() {
     cin >> mode;
 
     if(mode == 'e' || mode == 'E') {
-        
-    } 
+        if(encryptFile(filename,true)) {
+            cout << "Encryption Completed Succesfullly" << endl;
+        } else {
+            cerr << "Error: unabe to perform encryption." << endl;
+        }
+    } else if(mode == 'd' || mode == 'D') {
+        if(encryptFile(filename,false)) {
+            cout << "Decryption Completed Succesfullly" << endl;
+        } else {
+            cerr << "Error: unabe to perform Decryption." << endl;
+        }
+    } else {
+        cerr << "Error: Invalid mode selected, Use 'e' to Encryption and 'd' to Decrytion" << endl;
+    }
     return 0;
 }
